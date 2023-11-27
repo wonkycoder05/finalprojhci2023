@@ -1,0 +1,125 @@
+<head>
+    <title>Login Page</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
+    </script>
+    <script src="star-rating-svg-master/jquery.star-rating-svg.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="star-rating-svg-master/star-rating-svg.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+      $(".my-rating-4").starRating({
+        totalStars: 5,
+        starShape: 'rounded',
+        starSize: 40,
+        emptyColor: 'lightgray',
+        hoverColor: 'salmon',
+        activeColor: 'crimson',
+        useGradient: false
+        });
+    </script>
+    <style>
+      .ui-controlgroup-vertical {
+        width: 150px;
+      }
+      .ui-controlgroup.ui-controlgroup-vertical > button.ui-button,
+      .ui-controlgroup.ui-controlgroup-vertical > .ui-controlgroup-label {
+        text-align: center;
+      }
+      #location {
+        width: 120px;
+      }
+      .ui-controlgroup-horizontal .ui-spinner-input {
+        width: 20px;
+      }
+    </style>
+    </script>
+    <style>
+body{
+  margin-top: 10%;
+  margin-left: 10%;
+  margin-right:10%;
+  background-color:#c7ab59;
+  display: flex;
+  flex-direction: row;
+  flex-direction: column;
+}
+
+h1{
+  text-align: center;
+}
+.card{
+  background-color: #ded2a8;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 10%;
+  padding-bottom: 10%;
+}
+
+.textarea{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 10%;
+    padding-bottom: 10%; 
+}
+
+form{
+  display: block;
+  width: 100%;
+}
+
+
+
+@media only screen and (max-width: 500px){
+  button span {
+    display: none;
+  }
+}
+
+</style>
+
+
+</head>
+
+<body>
+    <div class="card">
+        <h1>Write your Review!</h1>
+    <form>
+        <div class="row">
+          <div class="col">
+            <div class="input-group">
+              <div class="input-group-text">First name:</div>
+              <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="Input your first name"> </div>
+            </div>
+          <div class="col">
+            <div class="input-group">
+              <div class="input-group-text">Last Name:</div>
+              <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="input your last name"> </div>
+            </div>
+            
+                </div>
+                <br><br><textarea class="form-control" aria-label="textarea" placeholder="Write your review here!"></textarea>
+                <br>
+                <div class="ui-controlgroup" include="form-input-select()">
+                <select id="location" required>
+                  <option value="" disabled selected hidden>Food Category:</option>
+                  <option value="local">Local Food</option>
+                  <option value="wester">Western Food</option>
+                  <option value="eastern">Eastern Food</option>
+                </select>
+                <div class="my-rating-4" data-rating="2.5"></div>
+            <br><br><a href="https://vionadjunaidy.github.io/HCI-Project-Homepage-Prototype/"></a><button type="submit" class="btn btn-primary">Submit</a> </button>
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+</div>
+
+
+</body>
