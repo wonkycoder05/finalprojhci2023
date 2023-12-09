@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="navbar" id="myNavbar">
+        <div class="sidebar">
+            <div class="exit" onclick=hideSidebar()>
+                <a href="#">
+                <i class='bx bx-x'></i>            
+                </a>
+            </div>
+
+            <div class="dropdown">
+                <a href="index.html"><button class="drop">Home</button></a>
+            </div>
+    
+            <div class="dropdown">
+                <button class="drop">Restaurants
+                    <i class='bx bxs-down-arrow'></i>
+                </button>
+                <div class="dropdowncontent">
+                    <a href="restaurant.html">Local Indonesian</a>
+                    <a href="restaurant.html">Western</a>
+                    <a href="restaurant.html">Asian</a>
+                </div>
+            </div>
+    
+            <div class="dropdown">
+                <button class="drop">Recipes
+                    <i class='bx bxs-down-arrow'></i>
+                </button>
+                <div class="dropdowncontent">
+                    <a href="recipe.html">Local Indonesian</a>
+                    <a href="recipe.html">Western</a>
+                    <a href="recipe.html">Asian</a>
+                </div>
+            </div>
+    
+            
+            <div class="dropdown"><a href="login.html">
+                <button class="drop">Login
+                    <i class='bx bxs-down-arrow'></i>
+                </button></a>
+            </div>
+        </div>
+
+        <div class="home">
+            <div class="dropdown">
+                <a href="index.html"><button class="drop">Home</button></a>
+            </div>
+
+            <div class="dropdown">
+                <button class="drop">Restaurants
+                    <i class='bx bxs-down-arrow'></i>
+                </button>
+                <div class="dropdowncontent">
+                    <a href="restaurant.html">Local Indonesian</a>
+                    <a href="restaurant.html">Western</a>
+                    <a href="restaurant.html">Asian</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="drop">Recipes
+                    <i class='bx bxs-down-arrow'></i>
+                </button>
+                <div class="dropdowncontent">
+                    <a href="recipe.html">Local Indonesian</a>
+                    <a href="recipe.html">Western</a>
+                    <a href="recipe.html">Asian</a>
+                </div>
+            </div>
+
+
+
+            <div class="dropdown"><a href="login.html">
+                <button class="drop">Login
+                    <i class='bx bxs-down-arrow'></i>
+                </button></a>
+            </div>
+        </div>
+
+        <div class="menu" onclick=showSidebar()>
+            <a href="#">
+            <i class='bx bx-menu'></i>
+            </a>
+        </div>
+    </div>
+ <div class="boxes">
+        <div class="today">
+            <h2>Today's Pick: Casa Cuomo</h2>
+            <img src="https://static.chope.co/uploads/2023/03/s-700x350x80xw_1678700302_40668.png?date=9c974e85">
+            <p>Casa Cuomo is an Italian-Japanese fusion restaurant that makes very good food, especially if one wants to see pasta cooked on a cheese wheel. It has a very good ambience and it is good to visit for dinner.<br><br>Location: Senopati, Jalan Gunawarman no. 57 Kebayoran Baru, Jakarta Selatan.   
+            </p>
+            <a href="todaypick.html"><button class="button">Full Review Here</button></a>
+            
+        </div>
+
+   
+        <div class="restaurant">
+            <h2>About Us: </h2>
+            <img src="https://i.pinimg.com/originals/cb/74/22/cb7422c2c2be0edba0c04da67266cc67.jpg">
+            <p>Who are we? We are Magda, Viona, and Viriya, here to help the elderly adjust better in this fast-paced era. We are here to show them the best restaurants the city can offer, and all the tips and tricks of cooking. We also include food reviews and restaurant reviews, so that they could make their best judgment when it comes to the places that they want to go. It goes without saying that our reference to make this website is from our own experience, so we can assure the people who visit here that they will have the best experience. We are open to the critics and suggestions.</p>
+        </div>
+</div>
+
+
+
+<script>
+    function showSidebar(){
+        const sidebar = document.querySelector('.sidebar')
+        sidebar.style.display = 'flex'
+    }
+    function hideSidebar(){
+        const sidebar = document.querySelector('.sidebar')
+        sidebar.style.display = 'none'
+    }
+</script>
+
+</body>
+</html>
