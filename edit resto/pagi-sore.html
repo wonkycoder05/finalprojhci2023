@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="script.js" defer></script>
+    <style>
+    * {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 15px;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .navbar {
+            overflow: hidden;
+            background-color: #302718;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .items {
+            display: flex;
+            flex-direction: row;
+            margin-top: 0;
+        }
+
+        .navbar a {
+            color: white;
+            text-align: center;
+        }
+
+        .item {
+            overflow: hidden;
+            margin-right: 20px;
+        }
+
+        .item .page {
+            border: none;
+            outline: none;
+            background-color: #302718;
+            color:#ded2a8;
+            margin: 0;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .navbar a:hover, .item:hover .page {
+            background-color: #ded2a8;
+            color: #302718;
+            transition: .3s;
+        }
+
+        .item a:hover {
+            background-color: #302718;
+            color: #ded2a8;
+            transition: .3s;
+        }
+
+        .navbar .menu i {
+            font-size: 30px;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 250px;
+            z-index: 999;
+            background-color: #302718;
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
+        .menu {
+            color:#ded2a8;
+            float: right;
+            padding: 5px;
+            z-index: 3;
+        }
+
+        .menu:hover {
+            color: #302718;
+            background-color: #ded2a8;
+        }
+
+        @media screen and (min-width: 600px) {
+            .menu {
+                display: none;
+                position: absolute;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .menu {
+                color: #ded2a8;
+                position: fixed;
+                top: 10px;
+                right: 10px;
+                background-color: #302718;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .home {
+                display: none;
+            }
+            .logo {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .sidebar {
+                width: 100%;
+            }
+        }
+
+        .button {
+            border: none;
+            background-color: #302718;
+            color: #ded2a8;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 20px;
+        }
+
+        .navbar a img {
+            height: 120px;
+            display: block;
+            margin-bottom: 0;
+        }
+
+        .exit i {
+            color: #ded2a8;
+            font-size: 30px;
+            cursor: pointer;
+            margin-top: 8px;
+        }    
+
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+    
+    .carousel {
+        width: 100%;
+        max-width: 600px;
+        height: 350px;
+        position: relative;
+        margin: 0 auto;
+    }
+    
+    .carousel > ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+    
+    .slide {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transition: 200ms opacity ease-in-out;
+        transition-delay: 200ms;
+    }
+    
+    .slide > img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .slide[data-active] {
+        opacity: 1;
+        z-index: 1;
+        transition-delay: 0ms;
+    }
+    
+    .carousel-button {
+        position: absolute;
+        z-index: 2;
+        background: none;
+        border: none;
+        font-size: 3rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        border-radius: .25rem;
+        padding: 0 .5rem;
+        background-color: rgba(0, 0, 0, .1);
+    }
+    
+    .carousel-button:hover,
+    .carousel-button:focus {
+        color: white;
+        background-color: rgba(0, 0, 0, .3);
+    }
+    
+    .carousel-button:focus {
+        outline: 1px solid black;
+    }
+    
+    .carousel-button.prev {
+        left: 0;
+    }
+    
+    .carousel-button.next {
+        right: 0;
+    }
+    
+    .container {
+        background-color: #DED2A8;
+        width: 50%;
+        height: auto;
+        padding: 10px;
+        border-radius: 20px;
+        margin-top: 20px;
+        margin-left: 30px;
+        margin-right: 30px;
+        float: left;
+    }
+
+    @media screen and (max-width:600px) {
+        .container {
+            width: 400px;
+            height: auto;
+        }
+        .carousel {
+            height: 250px;
+        }
+    }
+
+    .text {
+        line-height: 20px;
+        position: relative;
+    }
+
+    h1 {
+        font-size: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    i {
+        font-size: 20px;
+    }
+
+    .reviews {
+        width: 40%;
+        float: left;
+        padding: 15px;
+    }
+    
+    .reviews h2 {
+        font-size: 30px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .speech-bubble {
+        background-color: #DED2A8;
+        color: #302718;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 7px 30px 40px #61605f;
+        margin-bottom: 40px;
+    }
+
+    .smborder {
+            border: 0.3px solid black;
+            margin: 8px;
+    }
+
+    .reviews i {
+        font-size: 30px;
+    }
+    .reviews p {
+        margin-top: 10px;
+    }
+
+    .reviews button {
+        background-color: #302718;
+        color: #DED2A8;
+        cursor: pointer;
+        border-radius: 10px;
+        padding: 5px;
+    }
+
+    @media screen and (max-width: 700px) {
+        .container {
+            width: 90%;
+            float: left;
+            padding: 15px;
+        }
+        .reviews {
+            width: 100%;
+            float: left;
+            padding: 15px;            
+        }        
+    }
+
+    
+    </style>
+    
+    <script>
+        function showSidebar(){
+            const sidebar = document.querySelector('.sidebar')
+            sidebar.style.display = 'flex'
+        }
+        function hideSidebar(){
+            const sidebar = document.querySelector('.sidebar')
+            sidebar.style.display = 'none'
+        }
+
+        function checkWindowWidth() {
+            const windowWidth = window.innerWidth;
+            if (windowWidth >= 600) {
+                hideSidebar();
+            }
+        }
+
+        window.addEventListener('resize', checkWindowWidth);
+        checkWindowWidth();
+    </script>
+
+<body>
+    <div class="navbar" id="myNavbar">
+        <div class="sidebar">
+            <div class="exit" onclick=hideSidebar()>
+                <i class='bx bx-x'></i>
+            </div>
+
+            <div class="item logo">
+                <a href="index.html">
+                    <img src="logo.png" alt="Grandma's Reviews Logo">
+                </a>
+            </div>
+    
+            <div class="item">
+                <a href="restaurant.html"><button class="page">Restaurants</button></a>
+            </div>
+    
+            <div class="item">
+                <a href="recipe.html"><button class="page">Recipes</button></a>
+            </div>
+    
+            <div class="item">
+                <button class="page">About Us</button>
+            </div>
+            
+            <div class="item"><a href="login.html">
+                <button class="page">Login
+                </button></a>
+            </div>
+        </div>
+
+        <div class="item logo">
+            <a href="index.html">
+                <img src="logo.png" alt="Grandma's Reviews Logo">
+            </a>
+        </div>
+
+        <div class="home">
+            <div class="items">
+                <div class="item">
+                    <a href="restaurant.html"><button class="page">Restaurants</button></a>
+                </div>
+
+                <div class="item">
+                    <a href="recipe.html"><button class="page">Recipes</button></a>
+                </div>
+
+                <div class="item">
+                    <button class="page">About Us</button>
+                </div>
+                
+                <div class="item">
+                    <a href="login.html">
+                        <button class="page">Login</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu" onclick=showSidebar()>
+            <a href="#">
+            <i class='bx bx-menu'></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <section aria-label="Newest Photos">
+            <div class="carousel" data-carousel>
+                <button class="carousel-button previous" data-carousel-button="prev"><i class='bx bxs-left-arrow' ></i></button> 
+                <button class="carousel-button next" data-carousel-button="next"><i class='bx bxs-right-arrow'></i></button> 
+                <ul data-slides>
+                    <li class="slide" data-active>
+                        <img src="https://assets-pergikuliner.com/ZboY-cAxqtNQKwbWq1Wks23Tz-Y=/fit-in/1366x768/smart/filters:no_upscale()/https://assets-pergikuliner.com/uploads/image/picture/1467287/picture-1561808842.JPEG" alt="Burger King 1">
+                    </li>
+                    <li class="slide">
+                        <img src="https://idntrip.com/wp-content/uploads/pagi-sore-kemang.jpg" alt="Burger King 2">
+                    </li>
+                    <li class="slide">
+                        <img src="https://assets-pergikuliner.com/dSH8onRhjQ6o-eXx6mk_kmO9FcU=/fit-in/1366x768/smart/filters:no_upscale()/https://assets-pergikuliner.com/uploads/image/picture/1644315/picture-1571639434.jpg" alt="Burger King 3">
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <div class="text">
+            <h1>Rumah Makan Pagi Sore, Kemang</h1>
+            <p>Premium Minang Dining Experience.</p>
+            <br>
+            <p><b>Location:</b> Jl. Kemang Raya No. 30 Kemang, Jakarta 12730 Indonesia</p>
+            <br>
+            <p><b>Number:</b> +62 21 22718550</p>
+            <br>
+            <p><b>Opening Hours:</b> Monday - Sunday (10:00 - 21:00)</p>
+            <br>
+            <p><b>Rating:</b>
+                <i class='bx bxs-star' style="color: #b19232;"></i> 
+                <i class='bx bxs-star' style="color: #b19232;"></i>
+                <i class='bx bxs-star' style="color: #b19232;"></i>
+                <i class='bx bxs-star' style="color: #b19232;"></i>
+                <i class='bx bxs-star'></i>
+            </p>
+            <br>
+            <p><b>Price:</b>
+                <i class='bx bxs-dollar-circle' style="color: #b19232;"></i> 
+                <i class='bx bxs-dollar-circle' style="color: #b19232;"></i>
+                <i class='bx bxs-dollar-circle' style="color: #b19232;"></i>
+                <i class='bx bxs-dollar-circle'></i>
+                <i class='bx bxs-dollar-circle'></i>
+            </p>
+        </div>
+    </div>
+
+    <div class="reviews">
+        <h2>What they say...</h2>
+            <div class="speech-bubble"><b>Fani T.</b>
+                <div class="smborder"></div>
+                <i class='bx bxs-star' style="color: #b19232;"></i>
+                <i class='bx bxs-star' style="color: #b19232;"></i>
+                <i class='bx bxs-star' style="color: #b19232;"></i>
+                <i class='bx bxs-star' style="color: #b19232;"></i>
+                <i class='bx bxs-star' style="color: #b19232;"></i>
+                <p>The restaurant is really good but for those who aren't tolerant to spice, this isn't for you since the rendang is very spicy.</p>
+            </div>
+        
+            <div class="speech-bubble"><b>Nicole Y.</b>
+                <div class="smborder"></div>
+                <i class='bx bxs-star' style="color: #b19232;"></i>
+                <i class='bx bxs-star' style="color: #b19232;"></i>
+                <i class='bx bxs-star' style="color: #b19232;"></i>
+                <i class='bx bxs-star' style="color: #b19232;"></i>
+                <i class='bx bxs-star' style="color: #b19232;"></i>
+                <p>The food here is good and the quantity is perfect, and I can eat one portion for two people.</p>
+            </div>
+        
+            <div class="speech-bubble"><b>(username)</b>
+                <div class="smborder"></div>
+                <i class='bx bxs-star' style="color: #b19232;"></i>
+                <i class='bx bxs-star' style="color: #b19232;"></i>
+                <i class='bx bxs-star' style="color: #b19232;"></i>
+                <i class='bx bxs-star' style="color: #b19232;"></i>
+                <i class='bx bxs-star' style="color: #b19232;"></i>
+                <p>(comment)</p>
+            </div>
+            <button>Upload a Review</button>
+    </div>
+</body>
+</html>
