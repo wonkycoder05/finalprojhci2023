@@ -118,17 +118,16 @@
 
 .boxes {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    padding: 1%;
     gap: 1%;
-    margin: 1%;
-    text-align: justify;
-    padding-left : 10%;
+    padding-left: 5%;
 }
 
 .boxes img {
-    height: 200px;
-    width: auto;
-    margin: 10px;
+    height: auto;
+    width: 96%;
+    margin: 1%;
 }
 
 .restaurant {
@@ -140,10 +139,9 @@
 
 .recipe {
     background-color: #ded2a8;
-    width: 400px;
+    width: 75%;
     padding: 20px;
-    border-radius: 20px;
-}
+    border-radius: 20px;}
 
 .today {
     background-color: #ded2a8;
@@ -167,7 +165,7 @@
     .boxes {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
-        margin: 10px;
+        margin: 1%;
         text-align: center;
         justify-content: center;
     }
