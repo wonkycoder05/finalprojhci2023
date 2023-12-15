@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Plataran Tiga Dari</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
@@ -9,25 +10,41 @@
     <script src="script.js" defer></script>
     <style>
     * {
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        font-size: 15px;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 15px;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .navbar {
+        body {
+            background-color: beige;
+            padding: 0;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 40px; 
+            text-align: center;
+            color: #302718;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .navbar {
             overflow: hidden;
             background-color: #302718;
             display: flex;
-            align-items: center;
             flex-direction: column;
+            position: fixed;
+            width: 100%;
         }
 
         .items {
             display: flex;
             flex-direction: row;
-            margin-top: 0;
+            align-items: center;
+            justify-content: flex-start;
         }
 
         .navbar a {
@@ -35,31 +52,41 @@
             text-align: center;
         }
 
-        .item {
+        .sidebar .item {
             overflow: hidden;
-            margin-right: 20px;
+        }
+
+        .sidebar .top .item:hover {
+            background-color: #ded2a8;
+            color: #302718;
+            transition: .3s;
+            cursor: pointer;
         }
 
         .item .page {
             border: none;
             outline: none;
             background-color: #302718;
-            color:#ded2a8;
+            color: #ded2a8;
             margin: 0;
             padding: 10px;
             border-radius: 10px;
             cursor: pointer;
         }
 
-        .navbar a:hover, .item:hover .page {
-            background-color: #ded2a8;
-            color: #302718;
-            transition: .3s;
+        .home .item .page {
+            border: 2px solid #ded2a8;
         }
 
-        .item a:hover {
-            background-color: #302718;
-            color: #ded2a8;
+        .page.active {
+            color: #302718;
+            background-color: #ded2a8;
+        }
+
+        .navbar .background-hover:hover,
+        .item:hover .page {
+            background-color: #ded2a8;
+            color: #302718;
             transition: .3s;
         }
 
@@ -67,25 +94,43 @@
             font-size: 30px;
         }
 
+        .logo {
+            width: fit-content;
+            max-width: 150px;
+        }
+        .logo img {
+            width: 30%;
+            min-width: 150px;
+            padding: 20px;
+        }
+
+        .logo img:hover {
+            transform: scale(1.2);
+            transition: .3s;
+        }
+
         .sidebar {
             position: fixed;
             top: 0;
             right: 0;
-            height: 100vh;
+            height: 100%;
             width: 250px;
             z-index: 999;
             background-color: #302718;
             display: none;
             flex-direction: column;
-            align-items: flex-start;
-            justify-content: flex-start;
+            margin-bottom: 0;
+        }
+
+        .cheat-space {
+            min-height: 100px;
         }
 
         .menu {
-            color:#ded2a8;
+            color: #ded2a8;
             float: right;
             padding: 5px;
-            z-index: 3;
+            border-radius: 5px;
         }
 
         .menu:hover {
@@ -93,36 +138,9 @@
             background-color: #ded2a8;
         }
 
-        @media screen and (min-width: 600px) {
-            .menu {
-                display: none;
-                position: absolute;
-            }
-        }
-
-        @media screen and (max-width: 600px) {
-            .menu {
-                color: #ded2a8;
-                position: fixed;
-                top: 10px;
-                right: 10px;
-                background-color: #302718;
-            }
-        }
-
-        @media screen and (max-width: 600px) {
-            .home {
-                display: none;
-            }
-            .logo {
-                display: none;
-            }
-        }
-
-        @media screen and (max-width: 400px) {
-            .sidebar {
-                width: 100%;
-            }
+        .main {
+            height: auto;
+            width: auto;
         }
 
         .button {
@@ -135,19 +153,20 @@
             border-radius: 20px;
         }
 
-        .navbar a img {
-            height: 120px;
-            display: block;
-            margin-bottom: 0;
-        }
-
         .exit i {
             color: #ded2a8;
             font-size: 30px;
             cursor: pointer;
             margin-top: 8px;
-        }    
+            margin-left: 5px;
+        }
 
+        .exit i:hover {
+            background-color: #ded2a8;
+            color: #302718;
+            transition: .3s;
+            border-radius: 5px;
+        }
     *, *::before, *::after {
         box-sizing: border-box;
     }
@@ -299,28 +318,81 @@
         padding: 5px;
     }
 
-    @media screen and (max-width: 700px) {
-        .container {
-            width: 90%;
-            float: left;
-            padding: 15px;
-        }
-        .reviews {
-            width: 100%;
-            float: left;
-            padding: 15px;            
-        }        
-    }
 
-    
+    @media screen and (min-width: 600px) {
+            .menu {
+                display: none;
+                position: absolute;
+            }
+        }
+        
+        @media screen and (max-width: 600px) {
+            .menu {
+                color: #ded2a8;
+                position: fixed;
+                top: 10px;
+                right: 10px;
+                background-color: #302718;
+            }
+            .home {
+                display: none;
+            }
+
+            .main {
+                display: none;
+            }
+
+            .cheat-space {
+                min-height: 20px;
+            }
+        }
+    .items {
+            justify-content: space-between;
+        }
+
+        .left {
+            align-items: center;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .home .item {
+            margin-right: 20px;
+        }
+
+        .home .login .page {
+            background-color: #ded2a8;
+            color: #302718;
+            border-radius: 10px;
+        }
+        
+        .sidebar .smborder {
+            border: 0.2px solid #ded2a8;
+            margin: 0;
+        }
+
+        .sidebar .login {
+            margin-top: auto;
+        }
+
+        .sidebar .login .page {
+            background-color: #ded2a8;
+            color: #302718;
+            border-radius: 10px;
+            margin-left: 5px;
+            margin-bottom: 5px;
+        }
+
+        #loginContainer {
+            margin-left: auto;
+        }
     </style>
-    
     <script>
-        function showSidebar(){
+        function showSidebar() {
             const sidebar = document.querySelector('.sidebar')
             sidebar.style.display = 'flex'
         }
-        function hideSidebar(){
+        function hideSidebar() {
             const sidebar = document.querySelector('.sidebar')
             sidebar.style.display = 'none'
         }
@@ -336,71 +408,98 @@
         checkWindowWidth();
     </script>
 
+    <script>
+        $(document).ready(function () {
+            $(".page").click(function () {
+                $(".page").removeClass("active");
+                $(this).addClass("active");
+            });
+           
+            $(("body") && !("navbar")).click(function () {
+                hideSidebar();
+            });
+        });
+    </script>
+</head>
+
+
 <body>
     <div class="navbar" id="myNavbar">
         <div class="sidebar">
-            <div class="exit" onclick=hideSidebar()>
-                <i class='bx bx-x'></i>
+            <div class="top">
+                <div class="exit" onclick=hideSidebar()>
+                    <i class='bx bx-x'></i>
+                </div>
+
+                <div class="item">
+                    <a href="index.html" class="background-hover"><button class="page">Home</button></a>
+                </div>
+                <div class="smborder"></div>
+
+                <div class="item">
+                    <a href="restaurant(1).html" class="background-hover"><button class="page">Restaurants</button></a>
+                </div>
+                <div class="smborder"></div>
+
+                <div class="item">
+                    <a href="recipe(1).html" class="background-hover"><button class="page">Recipes</button></a>
+                </div>
+                <div class="smborder"></div>
+
+                <div class="item">
+                    <a href="aboutus.html" background-hover><button class="page">About Us</button></a>
+                </div>
+                <div class="smborder"></div>
             </div>
 
-            <div class="item logo">
-                <a href="index.html">
-                    <img src="logo.png" alt="Grandma's Reviews Logo">
-                </a>
+            <div class="login">
+                <div class="item" id="loginContainer">
+                    <a href="login.html">
+                        <button class="page">Log in</button>
+                    </a>
+                </div>
             </div>
-    
-            <div class="item">
-                <a href="restaurant.html"><button class="page">Restaurants</button></a>
-            </div>
-    
-            <div class="item">
-                <a href="recipe.html"><button class="page">Recipes</button></a>
-            </div>
-    
-            <div class="item">
-                <button class="page">About Us</button>
-            </div>
-            
-            <div class="item"><a href="login.html">
-                <button class="page">Login
-                </button></a>
-            </div>
-        </div>
-
-        <div class="item logo">
-            <a href="index.html">
-                <img src="logo.png" alt="Grandma's Reviews Logo">
-            </a>
+            <div class="smborder"></div>
         </div>
 
         <div class="home">
             <div class="items">
-                <div class="item">
-                    <a href="restaurant.html"><button class="page">Restaurants</button></a>
+                <div class="left">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="logo.png" alt="Grandma's Reviews Logo">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="restaurant(1).html" class="background-hover"><button class="page">Restaurants</button></a>
+                    </div>
+
+                    <div class="item">
+                        <a href="recipe(1).html" class="background-hover"><button class="page">Recipes</button></a>
+                    </div>
+
+                    <div class="item">
+                        <a href="aboutus.html" class="background-hover"><button class="page">About Us</button></a>
+                    </div>
                 </div>
 
-                <div class="item">
-                    <a href="recipe.html"><button class="page">Recipes</button></a>
-                </div>
-
-                <div class="item">
-                    <button class="page">About Us</button>
-                </div>
-                
-                <div class="item">
-                    <a href="login.html">
-                        <button class="page">Login</button>
-                    </a>
+                <div class="login">
+                    <div class="item">
+                        <a href="login.html">
+                            <button class="page">Log in</button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="menu" onclick=showSidebar()>
             <a href="#">
-            <i class='bx bx-menu'></i>
+                <i class='bx bx-menu'></i>
             </a>
         </div>
     </div>
+<div class="cheat-space"></div>
 
     <div class="container">
         <section aria-label="Newest Photos">
